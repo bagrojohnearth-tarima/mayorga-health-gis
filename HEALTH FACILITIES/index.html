@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayorga Leyte - GIS Health Facility Map</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button id="toggle-sidebar-btn" class="action-fab shadow-glow" title="Toggle Panel">
+        <span class="material-icons">menu</span>
+    </button>
+
+    <div id="sidebar" class="sidebar-visible">
+        <div class="sidebar-header">
+            <h2>Mayorga Health Map</h2>
+            <p class="subtitle">Interactive GIS Mapping System — Leyte</p>
+        </div>
+        
+        <div class="search-box">
+            <div class="input-wrapper">
+                <span class="material-icons search-icon">search</span>
+                <input type="text" id="search-input" placeholder="Search facilities or categories...">
+                <span id="clear-search-btn" class="material-icons clear-icon hidden">close</span>
+            </div>
+        </div>
+        
+        <div id="facility-directory-section" class="directory-container">
+            <h4 class="section-title">Medical Facilities Directory</h4>
+            <div id="directory-list" class="directory-list"></div>
+        </div>
+        
+        <hr>
+        
+        <h3>Map Legend</h3>
+        <div class="legend-container">
+            <div class="legend-item">
+                <div class="legend-icon-badge hospital-bg"><span class="material-icons">local_hospital</span></div> 
+                Main RHU Center
+            </div>
+            <div class="legend-item">
+                <div class="legend-icon-badge clinic-bg"><span class="material-icons">medical_services</span></div> 
+                Barangay Station
+            </div>
+            <div class="legend-item">
+                <div class="legend-icon-badge pharmacy-bg"><span class="material-icons">medication</span></div> 
+                Local Pharmacy
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="data/facilities.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
