@@ -1,0 +1,156 @@
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+}
+
+body, html { 
+    height: 100%; 
+    width: 100%; 
+    overflow: hidden; 
+    display: flex; 
+    background-color: #f7fafc;
+}
+
+/* Master Sidebar Engine Container Frame */
+#sidebar { 
+    width: 360px; 
+    height: 100%; 
+    background: #ffffff; 
+    box-shadow: 4px 0 25px rgba(0,0,0,0.08); 
+    z-index: 1000; 
+    padding: 24px; 
+    display: flex; 
+    flex-direction: column; 
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-visible { transform: translateX(0); }
+.sidebar-hidden { transform: translateX(-100%); position: absolute; }
+.sidebar-header { margin-bottom: 16px; }
+h2 { color: #1a202c; font-size: 1.45rem; font-weight: 700; letter-spacing: -0.5px; }
+.subtitle { font-size: 0.8rem; color: #718096; margin-top: 2px; }
+hr { border: 0; height: 1px; background: #edf2f7; margin: 18px 0; }
+
+/* Floating FAB Action Button Framework */
+.action-fab {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #3182ce;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1010;
+    transition: background 0.2s, transform 0.2s;
+}
+.action-fab:hover { background: #2b6cb0; transform: scale(1.05); }
+.shadow-glow { box-shadow: 0 10px 20px rgba(49, 130, 206, 0.3), 0 4px 6px rgba(0, 0, 0, 0.05); }
+
+/* Upgraded Input Text Wrapper Boxes */
+.search-box { margin-bottom: 16px; }
+.input-wrapper { position: relative; display: flex; align-items: center; width: 100%; }
+.search-icon { position: absolute; left: 12px; color: #a0aec0; font-size: 20px; pointer-events: none; }
+.clear-icon { position: absolute; right: 12px; color: #a0aec0; font-size: 18px; cursor: pointer; }
+.clear-icon:hover { color: #4a5568; }
+
+#search-input { 
+    width: 100%; 
+    padding: 12px 38px 12px 40px; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 8px; 
+    background-color: #f7fafc;
+    font-size: 0.9rem;
+    color: #2d3748;
+    transition: all 0.2s ease;
+}
+#search-input:focus {
+    outline: none;
+    border-color: #3182ce;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+.hidden { display: none !important; }
+
+/* Sidebar Directory List Design Cards */
+.directory-container { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+.section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: #a0aec0; margin-bottom: 8px; }
+.directory-list { display: flex; flex-direction: column; gap: 8px; padding-right: 4px; }
+.directory-card {
+    background: #ffffff;
+    border: 1px solid #edf2f7;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.directory-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-color: #cbd5e0; }
+.card-name { font-size: 0.9rem; font-weight: 600; color: #2d3748; }
+.card-meta { font-size: 0.75rem; color: #718096; margin-top: 2px; }
+.card-arrow { color: #cbd5e0; font-size: 18px; transition: color 0.2s; }
+.directory-card:hover .card-arrow { color: #3182ce; }
+.no-results { font-size: 0.85rem; color: #718096; text-align: center; padding: 20px 0; }
+
+/* Legend Section Badges */
+h3 { font-size: 0.9rem; color: #4a5568; margin-bottom: 12px; font-weight: 600;}
+.legend-container { display: flex; flex-direction: column; gap: 10px; }
+.legend-item { display: flex; align-items: center; font-size: 0.85rem; color: #4a5568; gap: 4px; }
+.legend-icon-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.legend-icon-badge span { font-size: 15px; }
+.hospital-bg { background-color: #e74c3c; }
+.clinic-bg { background-color: #e67e22; }
+.pharmacy-bg { background-color: #2ecc71; }
+
+#map { flex: 1; height: 100%; z-index: 1; }
+
+/* Custom Leaflet Map Pin Rendering Styles */
+.custom-leaflet-icon { background: transparent; border: none; }
+.custom-marker-pin {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    transition: transform 0.15s ease-in-out;
+}
+.custom-marker-pin span { color: #ffffff; font-size: 18px; }
+.custom-marker-pin:hover { transform: scale(1.18); box-shadow: 0 4px 14px rgba(0,0,0,0.35); }
+
+.custom-popup .leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+/* Responsive Mobile Viewports Overrides */
+@media (max-width: 768px) {
+    #sidebar { 
+        position: absolute; bottom: 0; left: 0;
+        width: 100%; height: 45%; 
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -10px 25px rgba(0,0,0,0.08);
+        z-index: 1005;
+    }
+    .sidebar-visible { transform: translateY(0); }
+    .sidebar-hidden { transform: translateY(100%); }
+    .action-fab { top: 16px; left: 16px; bottom: auto; right: auto; width: 44px; height: 44px; }
+}
